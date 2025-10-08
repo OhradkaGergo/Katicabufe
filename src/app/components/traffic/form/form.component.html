@@ -21,9 +21,15 @@
     <label for="mennyisegname">Mennyiség</label>
 </div>
 <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="egyseg" placeholder="">
+    <label for="egyseg">Egység</label>
+</div>
+<div class="form-floating mb-3">
     <input type="text" class="form-control" id="nettoar" placeholder="">
     <label for="nettoar">Nettó ár</label>
 </div>
+
+<!--
 <div class="form-floating mb-3">
     <input type="text" class="form-control" id="osszesen" placeholder="">
     <label for="osszesen">Összesen</label>
@@ -32,9 +38,10 @@
     <input type="text" class="form-control" id="kiadva" placeholder="">
     <label for="kiadva">Kiadva</label>
 </div>
+-->
 
+<div>
+    <button type="button" class="btn btn-secondary" routerLink="/traffic">Vissza</button>
 
-<button type="button" class="btn btn-secondary mb-3" routerLink="/traffic">Vissza</button>
-
-<button type="button" class="btn btn-primary mb-3" routerLink="/traffic">Mentés</button>
-
+    <button type="button" class="btn btn-primary" routerLink="/traffic">Mentés</button>
+</div>

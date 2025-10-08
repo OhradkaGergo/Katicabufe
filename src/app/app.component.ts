@@ -19,5 +19,7 @@ import { StatComponent } from './components/stat/stat.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Katicabufe';
+  appTitle = 'Katica Büfé App';
+  company = 'Bajai SZC Türr István Technikum';
+  author = '13.a szoftverfejlesztő';
 }
