@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import axios from 'axios';
 import { Traffic } from '../../../interfaces/traffic';
 import { ApiService } from '../../../services/api.service';
+import { ApiRes } from '../../../interfaces/apires';
 
 @Component({
   selector: 'app-trafficlist',
@@ -18,8 +19,13 @@ export class TrafficListComponent {
   traffic: Traffic[] = []
 
   async ngOnInit() {
-    this.api.selectAll('traffic').then(res => {
-      this.traffic = res
-    })
+    this.api.selectAll('traffic').then((res: ApiRes) => {
+        if (res.status == 200) {
+          this.traffic = res.data
+        } else {
+          alert(res.message)
+        }
+      }
+    )
   }
 }

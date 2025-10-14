@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import axios from 'axios';
 import { Category } from '../../../interfaces/category';
 import { ApiService } from '../../../services/api.service';
+import { ApiRes } from '../../../interfaces/apires';
 
 @Component({
   selector: 'app-catlist',
@@ -18,8 +19,14 @@ export class CategoryListComponent  implements OnInit{
   categories: Category[] = []
 
   async ngOnInit() {
-    this.api.selectAll('categories').then(res => {
-      this.categories = res
-    })
+      this.api.selectAll('categories').then((res: ApiRes) => {
+
+        if (res.status == 200) {
+          this.categories = res.data
+        } else {
+          alert(res.message)
+        }
+      }
+    )
   }
 }
