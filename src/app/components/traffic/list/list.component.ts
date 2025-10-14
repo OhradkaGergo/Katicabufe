@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import axios from 'axios';
 import { Traffic } from '../../../interfaces/traffic';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-trafficlist',
@@ -12,17 +13,13 @@ import { Traffic } from '../../../interfaces/traffic';
   styleUrl: './list.component.scss'
 })
 export class TrafficListComponent {
+  constructor(private api:ApiService){}
+
   traffic: Traffic[] = []
 
   async ngOnInit() {
-    try {
-      const response = await axios.get('http://localhost:3000/traffic')
-      this.traffic = response.data
-    } catch (error) {
-      console.log(error)
-      alert('nemjo')
-    }
-
-    console.log(this.traffic)
+    this.api.selectAll('traffic').then(res => {
+      this.traffic = res
+    })
   }
 }
