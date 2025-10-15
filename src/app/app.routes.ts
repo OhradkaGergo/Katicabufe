@@ -23,10 +23,17 @@ export const routes: Routes = [
         component: TrafficFormComponent
     },
     {
+        path: 'trafficform/:id',
+        component: TrafficFormComponent
+    },
+    {
         path: 'catform',
         component: CatFormComponent
     },
-    
+    {
+        path: 'catform/:id',
+        component: CatFormComponent
+    },
     {
         path: 'customersform',
         component: CustomersFormComponent

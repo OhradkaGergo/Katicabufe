@@ -11,7 +11,7 @@
             <th>Vevő</th>
             <th class="text-end">Mennyiség</th>
             <th class="text-end">Nettó</th>
-            <th class="text-end">Mennyiség</th>
+            <th class="text-end">Összesen</th>
             <th>Kiadva</th>
             <th>Műveletek</th>
         </tr>
@@ -23,18 +23,18 @@
             <td>{{traffic.kategoriaNev}}</td>
             <td>{{traffic.termek}}</td>
             <td>{{traffic.vevo}}</td>
-            <td>{{traffic.mennyiseg}} {{traffic.egysegar}}</td>
-            <td>{{traffic.nettoar}} Ft</td>
-            <td>{{traffic.mennyiseg * traffic.nettoar}} Ft</td>
+            <td class="text-end">{{traffic.mennyiseg}} {{traffic.egysegar}}</td>
+            <td class="text-end">{{traffic.nettoar}} Ft</td>
+            <td class="text-end">{{traffic.mennyiseg * traffic.nettoar}} Ft</td>
             <td>{{traffic.kiadva ? 'Kiadva' : 'Folyamatban'}}</td>
             <td>
-                <button class="btn btn-sm btn-warning me-2"><i class="bi bi-exclamation-circle-fill"></i></button>
-                <button class="btn btn-sm btn-danger"><i class="bi bi-x-circle-fill"></i></button>
+                <button class="btn btn-sm btn-warning me-2"><i class="bi bi-exclamation-circle-fill" routerLink="/trafficform/{{traffic.id}}"></i></button>
+                <button class="btn btn-sm btn-danger" (click)="delete(traffic.id)"><i class="bi bi-x-circle-fill"></i></button>
             </td>
         </tr>
     </tbody>
 
     <tfoot>
-        <th colspan="9" class="text-center">Összesen: <span style="padding: 0;">0</span> rekord</th>
+        <th colspan="9" class="text-center">Összesen: <span style="padding: 0;">{{ traffic.length }}</span> rekord</th>
     </tfoot>
 </table>

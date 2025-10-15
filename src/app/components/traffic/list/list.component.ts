@@ -15,17 +15,33 @@ import { ApiRes } from '../../../interfaces/apires';
 })
 export class TrafficListComponent {
   constructor(private api:ApiService){}
-
+  
   traffic: Traffic[] = []
-
+  
   async ngOnInit() {
+    this.getAllTraffic()
+  }
+  
+  getAllTraffic() {
     this.api.selectAll('traffic').then((res: ApiRes) => {
+      if (res.status == 200) {
+        this.traffic = res.data
+      } else {
+        alert(res.message)
+      }
+    })
+  }
+  
+  delete(id: number) {
+    if (window.confirm('biztosan törölni akarod?')) {
+      this.api.delete('traffic', id).then((res:ApiRes) => {
         if (res.status == 200) {
-          this.traffic = res.data
+          alert(res.message)
+          this.getAllTraffic()
         } else {
           alert(res.message)
         }
-      }
-    )
+      })
+    }
   }
 }

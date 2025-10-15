@@ -19,14 +19,30 @@ export class CategoryListComponent  implements OnInit{
   categories: Category[] = []
 
   async ngOnInit() {
-      this.api.selectAll('categories').then((res: ApiRes) => {
+      this.getAllCategories()
+  }
 
+  getAllCategories() {
+    this.api.selectAll('categories').then((res: ApiRes) => {
+      if (res.status == 200) {
+        this.categories = res.data
+      } else {
+        alert(res.message)
+      }
+    }
+  )
+  }
+
+  delete(id: number) {
+    if (window.confirm('biztosan törölni akarod?')) {
+      this.api.delete('categories', id).then((res:ApiRes) => {
         if (res.status == 200) {
-          this.categories = res.data
+          alert(res.message)
+          this.getAllCategories()
         } else {
           alert(res.message)
         }
-      }
-    )
+      })
+    }
   }
 }
