@@ -12,10 +12,13 @@
     </thead>
 
     <tbody>
-
+        <tr *ngFor="let t of traffic; index as i;">
+            <td>{{ i + 1}}. </td>
+            <td>{{ t.vevo }}</td>
+        </tr>
     </tbody>
 
     <tfoot>
-        <th colspan="2" class="text-center">Összesen: <span>0</span> rekord</th>
+        <th colspan="2" class="text-center">Összesen: <span style="padding: 0;">0</span> rekord</th>
     </tfoot>
 </table>
