@@ -4,11 +4,12 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Traffic } from '../../../interfaces/traffic';
 import { ApiService } from '../../../services/api.service';
 import { ApiRes } from '../../../interfaces/apires';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-trafficform',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
@@ -21,7 +22,7 @@ export class TrafficFormComponent {
     vevo: '',
     kategoriaNev: '',
     kategoriaId: 0,
-    egysegar: '',
+    egyseg: '',
     nettoar: 0,
     mennyiseg: 0,
     kiadva: false
@@ -51,18 +52,19 @@ export class TrafficFormComponent {
   getAllTraffic() {
     this.api.selectAll('traffic').then((res: ApiRes) => {
       this.allTraffic = res.data
-    })
+    })  
   }
 
   save() {
-    if (this.newTraffic.kategoriaNev == '') {
+    if (this.newTraffic.kategoriaId == 0) {
       alert('Nem adtál meg kategória nevet')
       return
     }
 
-    let idx = this.allTraffic.findIndex(item => item.kategoriaNev.toLowerCase() == this.newTraffic.kategoriaNev.toLowerCase())
+    let idx = this.allTraffic.findIndex(item => item.termek.toLocaleLowerCase() == this.newTraffic.termek.toLocaleLowerCase())
 
-    if (idx > -1) {
+    if (idx <  -1) {
+      console.log(idx)
       alert('már van ilyen izé')
       return
     }
@@ -77,7 +79,7 @@ export class TrafficFormComponent {
             vevo: '',
             kategoriaNev: '',
             kategoriaId: 0,
-            egysegar: '',
+            egyseg: '',
             nettoar: 0,
             mennyiseg: 0,
             kiadva: false

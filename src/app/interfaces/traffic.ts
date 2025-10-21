@@ -4,7 +4,7 @@ export interface Traffic {
   vevo: string,
   kategoriaNev: string,
   kategoriaId: number,
-  egysegar: string
+  egyseg: string
   nettoar: number,
   mennyiseg: number,
   kiadva: boolean

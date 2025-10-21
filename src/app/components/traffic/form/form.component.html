@@ -3,36 +3,40 @@
 <h5 *ngIf="!this.id">Új forgalom felvétele</h5>
 <h5 *ngIf="this.id">Forgalom módosítás</h5>
 
+<div class="form-floating mb-3">
+    <input type="number" class="form-control" id="catname" placeholder="" [(ngModel)]="newTraffic.kategoriaId">
+    <label for="catname" >Kategória ID</label>
+</div>
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="catname" placeholder="">
-    <label for="catname">Kategória név</label>
+    <input type="text" class="form-control" id="termekname" placeholder="" [(ngModel)]="newTraffic.termek">
+    <label for="termekname" >Termék név</label>
 </div>
+
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="termekname" placeholder="">
-    <label for="termekname">Termék név</label>
-</div>
-<div class="form-floating mb-3">
-    <input type="text" class="form-control" id="vevoname" placeholder="">
+    <input type="text" class="form-control" id="vevoname" placeholder="" [(ngModel)]="newTraffic.vevo">
     <label for="vevoname">Vevő név</label>
 </div>
 
 <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="mennyisegname" placeholder="">
+    <input type="number" class="form-control" id="mennyisegname" placeholder="" [(ngModel)]="newTraffic.mennyiseg">
     <label for="mennyisegname">Mennyiség</label>
 </div>
+
 <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="egyseg" placeholder="">
-    <label for="egyseg">Egység</label>
+    <input type="text" class="form-control" id="egysegname" placeholder="" [(ngModel)]="newTraffic.egyseg">
+    <label for="egysegname">Egység</label>
 </div>
+
 <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="nettoar" placeholder="">
+    <input type="number" class="form-control" id="nettoar" placeholder="" [(ngModel)]="newTraffic.nettoar">
     <label for="nettoar">Nettó ár</label>
 </div>
-<div class="form-floating mb-3">
-    <input type="text" class="form-control" id="kiadva" placeholder="">
-    <label for="kiadva">Kiadva</label>
-</div>
+
+<div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" value="" id="kiadva" [(ngModel)]="newTraffic.kiadva">
+    <label class="form-check-label" for="kiadva">Kiadva</label>
+</div>  
 
 <div>
     <button type="button" class="btn btn-secondary me-2" routerLink="/traffic">Vissza</button>
